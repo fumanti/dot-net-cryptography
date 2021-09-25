@@ -13,5 +13,6 @@ namespace secure_applications_cryptography
                 return randomNumber;
             }
         }
-    }    
+    }
+    
 }

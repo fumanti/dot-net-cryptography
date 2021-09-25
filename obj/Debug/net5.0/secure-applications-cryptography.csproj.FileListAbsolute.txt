@@ -1,0 +1,16 @@
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\bin\Debug\net5.0\secure-applications-cryptography.exe
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\bin\Debug\net5.0\secure-applications-cryptography.deps.json
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\bin\Debug\net5.0\secure-applications-cryptography.runtimeconfig.json
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\bin\Debug\net5.0\secure-applications-cryptography.runtimeconfig.dev.json
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\bin\Debug\net5.0\secure-applications-cryptography.dll
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\bin\Debug\net5.0\ref\secure-applications-cryptography.dll
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\bin\Debug\net5.0\secure-applications-cryptography.pdb
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\obj\Debug\net5.0\secure-applications-cryptography.csprojAssemblyReference.cache
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\obj\Debug\net5.0\secure-applications-cryptography.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\obj\Debug\net5.0\secure-applications-cryptography.AssemblyInfoInputs.cache
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\obj\Debug\net5.0\secure-applications-cryptography.AssemblyInfo.cs
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\obj\Debug\net5.0\secure-applications-cryptography.csproj.CoreCompileInputs.cache
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\obj\Debug\net5.0\secure-applications-cryptography.dll
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\obj\Debug\net5.0\ref\secure-applications-cryptography.dll
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\obj\Debug\net5.0\secure-applications-cryptography.pdb
+C:\Users\Stefano.Fumanti\source\repos\secure-applications-cryptography\obj\Debug\net5.0\secure-applications-cryptography.genruntimeconfig.cache

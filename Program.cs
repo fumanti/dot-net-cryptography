@@ -6,9 +6,14 @@ namespace secure_applications_cryptography
     {
         static void Main(string[] args)
         {
-            RandomNumberGenerator();
+            Execute(RandomNumberGenerator);
 
-            HashData();
+            // Execute(HashData);
+        }
+
+        static void Execute(Action action)
+        {
+            action.Invoke();
         }
 
         static void RandomNumberGenerator()
@@ -22,6 +27,9 @@ namespace secure_applications_cryptography
             {
                 Console.WriteLine($"Random number {i+1}: {Convert.ToBase64String(Random.GenerateRandomNumber(32))}");
             }
+            Console.WriteLine($"");
+            Console.WriteLine($"");
+
         }
 
         static void HashData()
@@ -52,5 +60,7 @@ namespace secure_applications_cryptography
             Console.WriteLine($"");
 
         }
+
+
     }
 }

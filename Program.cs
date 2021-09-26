@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace secure_applications_cryptography
 {
@@ -6,9 +7,10 @@ namespace secure_applications_cryptography
     {
         static void Main(string[] args)
         {
-            Execute(RandomNumberGenerator);
-
+            // Execute(RandomNumberGenerator);
             // Execute(HashData);
+            //Execute(HMAC);
+            Execute(Pbkdf2);
         }
 
         static void Execute(Action action)
@@ -61,6 +63,63 @@ namespace secure_applications_cryptography
 
         }
 
+        static void HMAC()
+        {
+            const string originalMessage = "Original message to Hash";
+            const string originalMessage2 = "Original mmessage to Hash";
 
-    }
+            Console.Clear();
+            Console.WriteLine($"HMAC Demo in .NET");
+            Console.WriteLine($"--------------------------");
+            Console.WriteLine($"");
+            
+            var key = Random.GenerateRandomNumber(32);
+
+            var hmessage1 = Hmac.ComputeHMAC_SHA512(System.Text.Encoding.UTF8.GetBytes(originalMessage), key);
+            var hmessage2 = Hmac.ComputeHMAC_SHA512(System.Text.Encoding.UTF8.GetBytes(originalMessage2), key);
+
+            Console.WriteLine($"Hash SHA512 1: {Convert.ToBase64String(hmessage1)}");
+            Console.WriteLine($"Hash SHA512 2: {Convert.ToBase64String(hmessage2)}");
+            Console.WriteLine($"");
+            Console.WriteLine($"");
+
+        }
+
+      static void Pbkdf2()
+      {
+         //const string password = "V3r7K0mP1&xP4$$w07d";
+         const string password = "the password";
+
+         Console.Clear();
+         Console.WriteLine($"Hashing password with PBKDF2 Demo in .NET");
+         Console.WriteLine($"--------------------------");
+         Console.WriteLine($"");
+
+         var salt = Random.GenerateRandomNumber(PBKDF2.KeySize);
+         int iterations = 100000;
+
+         var sw = new Stopwatch();
+         sw.Start();
+         var hashedPassword = PBKDF2.HashPassword(System.Text.Encoding.UTF8.GetBytes(password), salt, iterations);
+         sw.Stop();
+
+         Console.WriteLine($"Salt: {Convert.ToBase64String(salt)}");
+         Console.WriteLine($"Hashed password: {Convert.ToBase64String(hashedPassword)}");
+         Console.WriteLine($"{iterations} iterations executed in: {sw.ElapsedMilliseconds} ms");
+         Console.WriteLine($"");
+         Console.WriteLine($"Write the password: ");
+         string inputPassword = Console.ReadLine();
+         var hashedInputPassword = PBKDF2.HashPassword(System.Text.Encoding.UTF8.GetBytes(inputPassword), salt, iterations);
+         if(Convert.ToBase64String(hashedInputPassword) == Convert.ToBase64String(hashedPassword))
+			{
+            Console.WriteLine("Password match!");
+			}
+         else
+         {
+            Console.WriteLine("Password FAIL!");
+         }
+      }
+
+
+   }
 }

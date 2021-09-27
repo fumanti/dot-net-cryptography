@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Text;
 
 namespace secure_applications_cryptography
 {
@@ -8,9 +9,11 @@ namespace secure_applications_cryptography
         static void Main(string[] args)
         {
             // Execute(RandomNumberGenerator);
-            Execute(HashData);
+            // Execute(HashData);
             //Execute(HMAC);
             //Execute(Pbkdf2);
+            // Execute(TestAesEncryption);
+            Execute(TestAesGCM);
         }
 
         static void Execute(Action action)
@@ -130,6 +133,59 @@ namespace secure_applications_cryptography
          }
       }
 
+        static void TestAesEncryption()
+        {
+            const string originalMessage = "Text to Encrypt";
+
+            Console.Clear();
+            Console.WriteLine($"AES Encryption Demo in .NET");
+            Console.WriteLine($"--------------------------");
+            Console.WriteLine($"");
+            
+            var aes = new AesEncryption();
+            var key = Random.GenerateRandomNumber(32);
+            var iv = Random.GenerateRandomNumber(16);
+
+            var encrypted = aes.Encrypt(Encoding.UTF8.GetBytes(originalMessage), key, iv);
+            var decrypted = aes.Decrypt(encrypted, key, iv);
+
+            Console.WriteLine($"Original : {originalMessage}");
+            Console.WriteLine($"Encrypted: {Convert.ToBase64String(encrypted)}");
+            Console.WriteLine($"Decrypted: {Encoding.UTF8.GetString(decrypted)}");
+            Console.WriteLine($"");
+            Console.WriteLine($"");
+
+        }
+
+        static void TestAesGCM()
+        {
+            // const string originalMessage = "Super Secret Text to Encrypt";
+
+            Console.Clear();
+            Console.WriteLine($"AES GCM Encryption Demo in .NET");
+            Console.WriteLine($"--------------------------");
+            Console.WriteLine($"");
+            
+            Console.WriteLine($"Write your secret message to encrypt");
+            string originalMessage = Console.ReadLine();
+
+            var aesGcm = new AesGcmEncryption();
+            var gcmKey = Random.GenerateRandomNumber(32);
+            var nonce = Random.GenerateRandomNumber(12);
+
+            // Encrypt
+            (byte[] cypherText, byte[] tag) encrypted = aesGcm.Encrypt(Encoding.UTF8.GetBytes(originalMessage), gcmKey, nonce);
+            
+            // Decrypt
+            byte[] decrypted = aesGcm.Decrypt(encrypted.cypherText, gcmKey, nonce, encrypted.tag);
+
+            // Console.WriteLine($"Original : {originalMessage}");
+            Console.WriteLine($"Encrypted: {Convert.ToBase64String(encrypted.cypherText)}");
+            Console.WriteLine($"Decrypted: {Encoding.UTF8.GetString(decrypted)}");
+            Console.WriteLine($"");
+            Console.WriteLine($"");
+
+        }
 
    }
 }

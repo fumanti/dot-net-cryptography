@@ -6,4 +6,8 @@
     <RootNamespace>secure_applications_cryptography</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="5.0.0" />
+  </ItemGroup>
+
 </Project>

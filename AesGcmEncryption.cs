@@ -1,4 +1,3 @@
-using System.IO;
 using System.Security.Cryptography;
 
 namespace secure_applications_cryptography

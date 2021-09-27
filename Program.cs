@@ -13,7 +13,8 @@ namespace secure_applications_cryptography
             //Execute(HMAC);
             //Execute(Pbkdf2);
             // Execute(TestAesEncryption);
-            Execute(TestAesGCM);
+            // Execute(TestAesGCM);
+            Execute(TestDPAPI);
         }
 
         static void Execute(Action action)
@@ -182,6 +183,34 @@ namespace secure_applications_cryptography
             // Console.WriteLine($"Original : {originalMessage}");
             Console.WriteLine($"Encrypted: {Convert.ToBase64String(encrypted.cypherText)}");
             Console.WriteLine($"Decrypted: {Encoding.UTF8.GetString(decrypted)}");
+            Console.WriteLine($"");
+            Console.WriteLine($"");
+
+        }
+
+        static void TestDPAPI()
+        {
+            // const string originalMessage = "Super Secret Text to Encrypt";
+
+            Console.Clear();
+            Console.WriteLine($"DPAPI Demo in .NET");
+            Console.WriteLine($"--------------------------");
+            Console.WriteLine($"");
+            
+            Console.WriteLine($"Write your secret message to store");
+            string originalMessage = Console.ReadLine();
+            
+            Console.WriteLine($"Write random characters if you want to add entropy, or else press [return]");
+            string entropy = Console.ReadLine();
+
+            // Protect
+            var encrypted = Protected.Protect(originalMessage, entropy, System.Security.Cryptography.DataProtectionScope.LocalMachine);
+            
+            // Unprotect
+            string decrypted = Protected.Unprotect(encrypted, entropy, System.Security.Cryptography.DataProtectionScope.LocalMachine);
+
+            Console.WriteLine($"Encrypted: {encrypted}");
+            Console.WriteLine($"Decrypted: {decrypted}");
             Console.WriteLine($"");
             Console.WriteLine($"");
 
